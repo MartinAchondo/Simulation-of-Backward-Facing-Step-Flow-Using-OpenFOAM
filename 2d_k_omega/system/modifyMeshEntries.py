@@ -35,9 +35,7 @@ with open(path_file, 'r') as f:
     content = content.replace(fixedWalls_text1,fixedWalls_text2)
 
 
-
 with open(path_file, 'w') as file:
-  
     file.write(content)
   
 

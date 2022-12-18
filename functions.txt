@@ -5,3 +5,18 @@ foamMonitor -l ./postProcessing/residuals/0/residuals.dat
 
 
 pyFoamPlotRunner.py simpleFoam
+
+
+
+#simpleFoam -postProcess -func vorticity -latestTime
+#simpleFoam -postProcess -func wallShearStress -latestTime
+#simpleFoam -postProcess -func yPlus -latestTime
+
+
+
+# simpleFoam -postProcess -func "grad(U)"
+
+# add(U,U)
+# grad(U)
+# div(U)
+# mag(U)

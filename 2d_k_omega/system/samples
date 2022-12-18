@@ -1,0 +1,148 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Samples of data
+
+\*---------------------------------------------------------------------------*/
+
+
+cf_cp_surface
+{
+    type sets;
+    functionObjectLibs ( "libsampling.so" );
+    interpolationScheme cellPoint;
+    writeControl    timeStep;
+    writeInterval   $endTime;
+    setFormat raw;
+    fields (cf cp);
+    patches ("fixedWalls"); 
+    sets
+    (
+    lower_1
+        {
+            type lineUniform;
+            axis x;
+            start           (0 0.1 0);
+            end             (1 0.1 0);
+            nPoints         50;
+        }
+    lower_2
+        {
+            type lineUniform;
+            axis x;
+            start           (1 0 0);
+            end             (2 0 0);
+            nPoints         50;
+        }
+    upper
+        {
+            type lineUniform;
+            axis distance;
+            start           (0 0.2 0);
+            end             (2 0.2 0);
+            nPoints         50;
+        }
+    );
+}
+
+wallLaw_U
+{
+    type sets;
+    functionObjectLibs ( "libsampling.so" );
+    interpolationScheme cell;
+    writeControl    timeStep;
+    writeInterval   $endTime;
+    setFormat raw;
+    fields (U nut); 
+    sets
+    (
+    X1_down
+        {
+            type lineUniform;
+            axis distance;
+            start           ($pointWallLaw1 0.1 0);
+            end             ($pointWallLaw1 0.15 0);
+            nPoints         50;
+        }
+    X1_up
+        {
+            type lineUniform;
+            axis distance;
+            start           ($pointWallLaw1 0.2 0);
+            end             ($pointWallLaw1 0.15 0);
+            nPoints         50;
+        }
+    X2_down
+        {
+            type lineUniform;
+            axis distance;
+            start           ($pointWallLaw2 0 0);
+            end             ($pointWallLaw2 0.05 0);
+            nPoints         50;
+        }
+    X2_up
+        {
+            type lineUniform;
+            axis distance;
+            start           ($pointWallLaw2 0.2 0);
+            end             ($pointWallLaw2 0.15 0);
+            nPoints         50;
+        }
+    );
+}
+
+shearStressWall  
+{
+    type sets;
+    functionObjectLibs ( "libsampling.so" );
+    interpolationScheme cellPoint;
+    writeControl    timeStep;
+    writeInterval   $endTime;
+    setFormat raw;
+    fields (wallShearStress);
+    patches ("fixedWalls");
+    sets
+    (
+    X1_down
+        {
+        type lineUniform;
+        axis distance;
+        start           ($pointWallLaw1 0.1 0);
+        end             (1 0.1 0);
+        nPoints         1;
+        }
+    X1_up
+        {
+        type lineUniform;
+        axis distance;
+        start           ($pointWallLaw1 0.2 0);
+        end             (1 0.1 0);
+        nPoints         1;
+        }
+    X2_down
+        {
+        type lineUniform;
+        axis distance;
+        start           ($pointWallLaw2 0 0);
+        end             (1 0 0);
+        nPoints         1;
+        }
+    X2_up
+        {
+        type lineUniform;
+        axis distance;
+        start           ($pointWallLaw2 0.2 0);
+        end             (1 0.2 0);
+        nPoints         1;
+        }
+    );
+}
+
+
+
+// ************************************************************************* //

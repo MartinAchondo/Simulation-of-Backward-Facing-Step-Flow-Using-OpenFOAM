@@ -17,7 +17,8 @@ FoamFile
 
 scale_factor  1249.9999999999986;
 
-pointWallLaw  0.95;
+pointWallLaw1  0.95;
+pointWallLaw2  1.4;
 
 
 application     simpleFoam;
@@ -75,6 +76,18 @@ functions
       result  cp;
     }
 
+    nuTurb
+    {
+      type    scale;
+      libs    ("libfieldFunctionObjects.so");
+      writeControl    writeTime;
+      field   nut;
+      scale   1.0;
+      result  nuTurb;
+      offSet  -1e-06;
+    }
+
+
     wallShearStress
     {
         type            wallShearStress;
@@ -96,51 +109,7 @@ functions
         writeControl    writeTime;
     }
 
-  
-  wallLaw  
-  {
-    type sets;
-    functionObjectLibs ( "libsampling.so" );
-    interpolationScheme cell;
-    writeControl    timeStep;
-    writeInterval   $endTime;
-    setFormat raw;
-    fields (U); 
-    sets
-    (
-      X1 // line name
-    {
-        type lineUniform;
-        axis distance;
-        start           ($pointWallLaw 0.1 0);
-        end             ($pointWallLaw 0.2 0);
-        nPoints         50;
-      }
-    );
-  }
-
-  shearStressWall  
-  {
-    type sets;
-    functionObjectLibs ( "libsampling.so" );
-    interpolationScheme cellPoint;
-    writeControl    timeStep;
-    writeInterval   $endTime;
-    setFormat raw;
-    fields (wallShearStress);
-    patches ("fixedWalls");
-    sets
-    (
-      X1 // line name
-    {
-        type lineUniform;
-        axis distance;
-        start           ($pointWallLaw 0.1 0);
-        end             (1 0.1 0);
-        nPoints         1;
-      }
-    );
-  }
+    #include "samples"
 
 }
 

@@ -18,17 +18,6 @@ $application
 foamToVTK
 
 
-#simpleFoam -postProcess -func vorticity -latestTime
-#simpleFoam -postProcess -func wallShearStress -latestTime
-#simpleFoam -postProcess -func yPlus -latestTime
 
-
-
-# simpleFoam -postProcess -func "grad(U)"
-
-# add(U,U)
-# grad(U)
-# div(U)
-# mag(U)
 
 #------------------------------------------------------------------------------

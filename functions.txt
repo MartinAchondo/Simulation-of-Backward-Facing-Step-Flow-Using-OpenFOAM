@@ -1,0 +1,7 @@
+
+
+foamGet residuals
+foamMonitor -l ./postProcessing/residuals/0/residuals.dat
+
+
+pyFoamPlotRunner.py simpleFoam

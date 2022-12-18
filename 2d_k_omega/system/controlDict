@@ -142,28 +142,6 @@ functions
     );
   }
 
-  
-  // probes
-  // {
-  // // Where to load it from
-  //         functionObjectLibs ( "libsampling.so" );
-
-  //         type        probes;
-  //         writeControl    timeStep;
-  //         writeInterval   100;
-
-  //         // Name of the directory for probe data
-  //         name        probes;
-  //         probeLocations
-  //         (
-  //           (1.5 0 0.01)
-  //         );
-
-  //         // Fields to be probed
-  //         fields ( wallShearStress );
-
-  // }
-
 }
 
 // ************************************************************************* //

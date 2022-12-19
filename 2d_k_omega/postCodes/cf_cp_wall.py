@@ -2,12 +2,12 @@ import os
 import numpy as np
 import pandas as pd
 
-endTime = 100
+path_current_L = os.path.dirname(os.path.realpath(__file__)).split("\\")
+path_current_L.pop()
+path_case = "\\".join(path_current_L)
 
-path_case = os.getcwd()
-path_post = os.path.join(path_case,'postProcessing','cf_cp_surface',str(endTime))
-
-def get_cf():
+def get_cf(case):
+    path_post = os.path.join(path_case,'postProcessing','cf_cp_surface',str(case.endTime))
     cf_lower_1 = pd.read_csv(os.path.join(path_post,'lower_1_cf.xy'), sep='\t', header=None)
     cf_lower_1.columns = ['x','cf','cfy','cfz']
     cf_lower_2 = pd.read_csv(os.path.join(path_post,'lower_2_cf.xy'), sep='\t', header=None)
@@ -20,7 +20,8 @@ def get_cf():
     return cf_lower,cf_upper
     
 
-def get_cp():
+def get_cp(case):
+    path_post = os.path.join(path_case,'postProcessing','cf_cp_surface',str(case.endTime))
     cp_lower_1 = pd.read_csv(os.path.join(path_post,'lower_1_cp.xy'), sep='\t', header=None)
     cp_lower_1.columns = ['x','cp']
     cp_lower_2 = pd.read_csv(os.path.join(path_post,'lower_2_cp.xy'), sep='\t', header=None)

@@ -17,10 +17,6 @@ FoamFile
 
 #include    "$FOAM_CASE/constant/initialConditions"
 
-pointWallLaw1  0.95;
-pointWallLaw2  1.4;
-
-
 application     simpleFoam;
 
 startFrom       startTime;

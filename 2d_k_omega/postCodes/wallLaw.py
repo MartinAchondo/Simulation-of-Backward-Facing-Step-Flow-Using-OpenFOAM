@@ -3,24 +3,23 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-endTime = 100
-nu = 10.0**-6
+path_current_L = os.path.dirname(os.path.realpath(__file__)).split("\\")
+path_current_L.pop()
+path_case = "\\".join(path_current_L)
 
-path_case = os.getcwd()
-
-def get_wall(X,wall):
-    path_post = os.path.join(path_case,'postProcessing','shearStressWall',str(endTime),f'{X}_{wall}_wallShearStress.xy')
+def get_wall(X,wall,case):
+    path_post = os.path.join(path_case,'postProcessing','shearStressWall',str(case.endTime),f'{X}_{wall}_wallShearStress.xy')
 
     tau_df = pd.read_csv(path_post, sep='\t', header=None)
     tau = abs(float(tau_df[1]))
 
-    path_post = os.path.join(path_case,'postProcessing','wallLaw_U',str(endTime),f'{X}_{wall}_U.xy')
+    path_post = os.path.join(path_case,'postProcessing','wallLaw_U',str(case.endTime),f'{X}_{wall}_U.xy')
     U_df = pd.read_csv(path_post, sep='\t', header=None)
     U_df.columns = ['y','Ux','Uy','Uz']
     U_df.drop('Uy', inplace=True, axis=1)
     U_df.drop('Uz', inplace=True, axis=1)
 
-    U_df['y'] = U_df['y']*np.sqrt(tau)/nu
+    U_df['y'] = U_df['y']*np.sqrt(tau)/case.nu
     U_df['Ux'] = U_df['Ux']/np.sqrt(tau)
 
     return tau,U_df

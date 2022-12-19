@@ -16,7 +16,7 @@ application="$(getApplication)"
 $application
 #runApplication $application
 
-foamToVTK
+#foamToVTK
 
 
 

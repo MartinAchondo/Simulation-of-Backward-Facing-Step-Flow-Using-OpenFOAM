@@ -1,4 +1,6 @@
 /tutorials
+/__pycache__
+__pycache__/
 
 examples/1. cavity/*
 !examples/1. cavity/0

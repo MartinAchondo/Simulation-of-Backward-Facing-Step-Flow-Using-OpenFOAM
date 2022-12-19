@@ -37,11 +37,6 @@ factor = 1/(0.5*u**2)
 
 
 def modify_file(name,text):
-    # with open(os.path.join(file_path,name), 'r') as f:
-    #     content = f.read()
-    #     content = content.split('\n')
-    #     content[mod_line-1] = text
-    #     content = '\n'.join(content)
     with open(os.path.join(file_path,name), 'w') as f:
         f.write(text)
   
@@ -56,15 +51,5 @@ text += f'rho_input     {rho};\n'
 text += f'factor_adim   {factor};\n'
 
 modify_file(name,text)
-
-
-
-# file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'system')
-# mod_line = 18
-
-# name = 'controlDict'
-# text = f'scale_factor  {factor};'
-# modify_file(name,text,mod_line)
-
 
 print("Fields Values OK\n\n")

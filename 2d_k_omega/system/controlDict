@@ -29,7 +29,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         1000;
+endTime         100;
 
 deltaT          1;
 
@@ -58,11 +58,36 @@ functions
 
     //#includeFunc streamlines;
 
+    wallShearStress
+    {
+        type            wallShearStress;
+        functionObjectLibs ("libfieldFunctionObjects.so");
+        writeControl    writeTime;
+        timeStart       $endTime;
+    }
+
+    yPlus
+    {
+        type            yPlus;
+        functionObjectLibs ("libfieldFunctionObjects.so");
+        writeControl    writeTime;
+        timeStart       $endTime;
+    }
+
+    vorticity
+    {
+        type            vorticity;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    writeTime;
+        timeStart       $endTime;
+    }
+
     cf
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
       writeControl    writeTime;
+      timeStart       $endTime;
       field   wallShearStress;
       scale   $factor_adim;
       result  cf;
@@ -73,6 +98,7 @@ functions
       type    scale;
       libs    ("libfieldFunctionObjects.so");
       writeControl    writeTime;
+      timeStart       $endTime;
       field   p;
       scale   $factor_adim;
       result  cp;
@@ -83,33 +109,13 @@ functions
       type    scale;
       libs    ("libfieldFunctionObjects.so");
       writeControl    writeTime;
+      timeStart       $endTime;
       field   nut;
       scale   1.0;
       result  nuTurb;
       offSet  -1e-06;
     }
 
-
-    wallShearStress
-    {
-        type            wallShearStress;
-        functionObjectLibs ("libfieldFunctionObjects.so");
-        writeControl    writeTime;
-    }
-
-    yPlus
-    {
-        type            yPlus;
-        functionObjectLibs ("libfieldFunctionObjects.so");
-        writeControl    writeTime;
-    }
-
-    vorticity
-    {
-        type            vorticity;
-        libs            ("libfieldFunctionObjects.so");
-        writeControl    writeTime;
-    }
 
     #include "samples"
 

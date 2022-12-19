@@ -66,8 +66,8 @@ wallLaw_U
             type lineUniform;
             axis distance;
             start           ($pointWallLaw1 0.1 0);
-            end             ($pointWallLaw1 0.15 0);
-            nPoints         50;
+            end             ($pointWallLaw1 0.12 0);
+            nPoints         500;
         }
     X1_up
         {

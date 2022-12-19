@@ -25,7 +25,7 @@ class foamCase():
         
         self.calculate_fields()
 
-        self.endTime = 100
+        self.endTime = 1000
  
     def calculate_fields(self):
 

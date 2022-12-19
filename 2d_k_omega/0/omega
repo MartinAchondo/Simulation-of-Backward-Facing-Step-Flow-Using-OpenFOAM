@@ -15,9 +15,11 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include    "$FOAM_CASE/constant/initialConditions"
+
 dimensions      [0 0 -1 0 0 0 0];
 
-internalField   uniform 0.05749889084999462;
+internalField   uniform $omega_ave;
 
 boundaryField
 {

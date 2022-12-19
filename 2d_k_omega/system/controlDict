@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-scale_factor  1249.9999999999986;
+#include    "$FOAM_CASE/constant/initialConditions"
 
 pointWallLaw1  0.95;
 pointWallLaw2  1.4;
@@ -56,13 +56,15 @@ functions
   {
     #includeFunc  residuals;
 
+    //#includeFunc streamlines;
+
     cf
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
       writeControl    writeTime;
       field   wallShearStress;
-      scale   $scale_factor;
+      scale   $factor_adim;
       result  cf;
     }
 
@@ -72,7 +74,7 @@ functions
       libs    ("libfieldFunctionObjects.so");
       writeControl    writeTime;
       field   p;
-      scale   $scale_factor;
+      scale   $factor_adim;
       result  cp;
     }
 

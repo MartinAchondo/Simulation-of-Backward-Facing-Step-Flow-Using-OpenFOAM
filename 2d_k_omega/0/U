@@ -14,16 +14,17 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include    "$FOAM_CASE/constant/initialConditions"
+
 dimensions      [0 1 -1 0 0 0 0];
-
 internalField   uniform (0 0 0);
-
 
 boundaryField
 {
     inlet
     {
         type            fixedValue;
+        U_ave       $U_inlet_ave;
         value           #codeStream
         {
             codeInclude
@@ -45,6 +46,9 @@ boundaryField
 
             code
             #{
+                const scalar U_inlet = readScalar(dict.lookup("U_ave"));
+                const scalar H = 0.1;
+
                 const IOdictionary& d = static_cast<const IOdictionary&>
                 (
                 dict.parent().parent()
@@ -52,9 +56,6 @@ boundaryField
                 const fvMesh& mesh = refCast<const fvMesh>(d.db());
                 const label id = mesh.boundary().findPatchID("inlet");
                 const fvPatch& patch = mesh.boundary()[id];
-                
-                const scalar U_inlet = 0.04000000000000002;
-                const scalar H = 0.1; //patch center; //patch radius
                 
                 vectorField U(patch.size(), vector(0, 0, 0));
 

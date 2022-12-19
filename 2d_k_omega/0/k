@@ -15,9 +15,11 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include    "$FOAM_CASE/constant/initialConditions"
+
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 6.000000000000009e-06;
+internalField   uniform $k_ave;
 
 boundaryField
 {

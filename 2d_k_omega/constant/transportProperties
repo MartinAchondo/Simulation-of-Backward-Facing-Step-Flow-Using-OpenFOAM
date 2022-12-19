@@ -15,9 +15,11 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include    "$FOAM_CASE/constant/initialConditions"
+
 transportModel  Newtonian;
 
-nu              [0 2 -1 0 0 0 0] 1e-06;
-rho             [0 2 -1 0 0 0 0] 1e3;
+nu              [0 2 -1 0 0 0 0] $nu_input;
+rho             [0 2 -1 0 0 0 0] $rho_input;
 
 // ************************************************************************* //

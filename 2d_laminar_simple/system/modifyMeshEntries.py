@@ -2,7 +2,11 @@ import os
 
 
 file_name = 'boundary'
-path_file = os.path.join(os.path.dirname(os.path.realpath(__file__)),'constant','polyMesh',file_name)
+path_current_L = os.path.dirname(os.path.realpath(__file__)).split("\\")
+path_current_L.pop()
+path_current = "\\".join(path_current_L)
+
+path_file = os.path.join(path_current,'constant','polyMesh',file_name)
 
 frontAndBack_text1 = '''frontAndBack
     {
@@ -31,9 +35,7 @@ with open(path_file, 'r') as f:
     content = content.replace(fixedWalls_text1,fixedWalls_text2)
 
 
-
 with open(path_file, 'w') as file:
-  
     file.write(content)
   
 

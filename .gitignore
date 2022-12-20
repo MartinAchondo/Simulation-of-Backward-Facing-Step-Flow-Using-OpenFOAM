@@ -3,6 +3,7 @@
 __pycache__/
 tests/
 <<<<<<< HEAD
+<<<<<<< HEAD
 Meshes/
 Geometries/
 **/solution/
@@ -10,3 +11,7 @@ Geometries/
 Meshes1/
 Geometries1/
 >>>>>>> 3ae61a3 (mod)
+=======
+Meshes/
+Geometries/
+>>>>>>> 62c595e (mod)

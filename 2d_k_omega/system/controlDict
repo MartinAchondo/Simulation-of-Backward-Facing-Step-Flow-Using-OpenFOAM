@@ -31,9 +31,9 @@ deltaT          1;
 
 writeControl    timeStep;
 
-writeInterval   $endTime;
+writeInterval   100;
 
-purgeWrite      0;
+purgeWrite      3;
 
 writeFormat     ascii;
 
@@ -58,7 +58,7 @@ functions
     {
         type            wallShearStress;
         functionObjectLibs ("libfieldFunctionObjects.so");
-        writeControl    writeTime;
+        writeControl    timeStep;
         timeStart       $endTime;
     }
 
@@ -66,7 +66,7 @@ functions
     {
         type            yPlus;
         functionObjectLibs ("libfieldFunctionObjects.so");
-        writeControl    writeTime;
+        writeControl    timeStep;
         timeStart       $endTime;
     }
 
@@ -74,7 +74,7 @@ functions
     {
         type            vorticity;
         libs            ("libfieldFunctionObjects.so");
-        writeControl    writeTime;
+        writeControl    timeStep;
         timeStart       $endTime;
     }
 
@@ -82,7 +82,7 @@ functions
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
-      writeControl    writeTime;
+      writeControl    timeStep;
       timeStart       $endTime;
       field   wallShearStress;
       scale   $factor_adim;
@@ -93,7 +93,7 @@ functions
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
-      writeControl    writeTime;
+      writeControl    timeStep;
       timeStart       $endTime;
       field   p;
       scale   $factor_adim;
@@ -104,7 +104,7 @@ functions
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
-      writeControl    writeTime;
+      writeControl    timeStep;
       timeStart       $endTime;
       field   nut;
       scale   1.0;

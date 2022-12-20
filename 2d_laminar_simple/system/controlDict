@@ -25,9 +25,13 @@ startTime       0;
 
 stopAt          endTime;
 
+<<<<<<< HEAD
 endTime         1000;
+=======
+endTime         100;
+>>>>>>> 3165d5b (m)
 
-deltaT          0.1;
+deltaT          1;
 
 writeControl    timeStep;
 
@@ -52,6 +56,8 @@ runTimeModifiable true;
 functions
   {
     #includeFunc  residuals
+
+    //#includeFunc  streamlines
 
     wallShearStress
     {

@@ -11,7 +11,16 @@ Description
 \*---------------------------------------------------------------------------*/
 
 
+<<<<<<< HEAD:2d_laminar_simple/constant/initialConditions
 U_inlet_ave   0.004000000000000002;
 nu_input      1.0000000000000006e-06;
 rho_input     1000.0;
 factor_adim   124999.99999999987;
+=======
+U_inlet_ave   0.001500000000000001;
+nu_input      1.0000000000000006e-06;
+rho_input     1000.0;
+factor_adim   888888.8888888878;
+Lx   2.7;
+endTime_input   200;
+>>>>>>> 3165d5b (m):2d_laminar_simple/constant/fieldsValues

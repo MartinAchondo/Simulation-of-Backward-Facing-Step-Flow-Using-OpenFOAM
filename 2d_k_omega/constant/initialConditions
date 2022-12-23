@@ -11,9 +11,17 @@ Description
 \*---------------------------------------------------------------------------*/
 
 
+<<<<<<< HEAD:2d_k_omega/constant/initialConditions
 U_inlet_ave   0.04;
 k_ave         6e-06;
 omega_ave     0.05749889084999459;
 nu_input      1e-06;
 rho_input     1000.0;
 factor_adim   1250.0;
+=======
+U_inlet_ave   0.004000000000000002;
+nu_input      1.0000000000000006e-06;
+rho_input     1000.0;
+factor_adim   124999.99999999987;
+Lx   2.7;
+>>>>>>> cc37e1a (modifications):2d_laminar_simple/constant/fieldsValues

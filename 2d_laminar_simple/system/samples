@@ -18,8 +18,7 @@ cf_cp_surface
     type sets;
     functionObjectLibs ( "libsampling.so" );
     interpolationScheme cellPoint;
-    writeControl    timeStep;
-    writeInterval   $endTime;
+    writeControl    onEnd;
     setFormat raw;
     fields (cf cp);
     patches ("fixedWalls"); 

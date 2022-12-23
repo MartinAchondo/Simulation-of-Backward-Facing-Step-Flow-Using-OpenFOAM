@@ -25,13 +25,17 @@ startTime       0;
 
 stopAt          endTime;
 
+<<<<<<< HEAD
 endTime         1000;
+=======
+endTime         3000;
+>>>>>>> cc37e1a (modifications)
 
 deltaT          1;
 
 writeControl    timeStep;
 
-writeInterval   100;
+writeInterval   500;
 
 purgeWrite      3;
 
@@ -58,32 +62,28 @@ functions
     {
         type            wallShearStress;
         functionObjectLibs ("libfieldFunctionObjects.so");
-        writeControl    timeStep;
-        timeStart       $endTime;
+        writeControl    onEnd;
     }
 
     yPlus
     {
         type            yPlus;
         functionObjectLibs ("libfieldFunctionObjects.so");
-        writeControl    timeStep;
-        timeStart       $endTime;
+        writeControl    onEnd;
     }
 
     vorticity
     {
         type            vorticity;
         libs            ("libfieldFunctionObjects.so");
-        writeControl    timeStep;
-        timeStart       $endTime;
+        writeControl    onEnd;
     }
 
     cf
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
-      writeControl    timeStep;
-      timeStart       $endTime;
+      writeControl    onEnd;
       field   wallShearStress;
       scale   $factor_adim;
       result  cf;
@@ -93,8 +93,7 @@ functions
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
-      writeControl    timeStep;
-      timeStart       $endTime;
+      writeControl    onEnd;
       field   p;
       scale   $factor_adim;
       result  cp;
@@ -104,8 +103,7 @@ functions
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
-      writeControl    timeStep;
-      timeStart       $endTime;
+      writeControl    onEnd;
       field   nut;
       scale   1.0;
       result  nuTurb;

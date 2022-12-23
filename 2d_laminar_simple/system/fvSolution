@@ -20,17 +20,22 @@ solvers
     p
     {
         solver          GAMG;
+<<<<<<< HEAD
         tolerance       1e-06;
+=======
+        tolerance       1e-10;
+>>>>>>> cc37e1a (modifications)
         relTol          0.1;
-        smoother        GaussSeidel;
+        smoother        DICGaussSeidel;
+        minIter         5;
     }
 
     U
     {
         solver          smoothSolver;
-        smoother        GaussSeidel;
-        nSweeps         2;
-        tolerance       1e-08;
+        smoother        symGaussSeidel;
+        nSweeps         1;
+        tolerance       1e-10;
         relTol          0.1;
     }
 
@@ -38,7 +43,6 @@ solvers
 
 SIMPLE
 {
-    nCorrectors     2;
     nNonOrthogonalCorrectors 0;
  
     residualControl
@@ -47,18 +51,6 @@ SIMPLE
         U               1e-5;
     }
 }
-
-// PISO
-// {
-//     nCorrectors     2;
-//     nNonOrthogonalCorrectors 2;
- 
-//     residualControl
-//     {
-//         p               1e-8;
-//         U               1e-8;
-//     }
-// }
 
 
 relaxationFactors

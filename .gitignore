@@ -6,6 +6,7 @@ tests/
 <<<<<<< HEAD
 Meshes/
 Geometries/
+<<<<<<< HEAD
 **/solution/
 =======
 Meshes1/
@@ -15,3 +16,9 @@ Geometries1/
 Meshes/
 Geometries/
 >>>>>>> 62c595e (mod)
+=======
+solution/
+postProcessing/
+dynamicCode/
+polyMesh/
+>>>>>>> cc37e1a (modifications)

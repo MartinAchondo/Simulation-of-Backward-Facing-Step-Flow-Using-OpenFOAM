@@ -67,21 +67,21 @@ functions
     {
         type            wallShearStress;
         functionObjectLibs ("libfieldFunctionObjects.so");
-        writeControl    onEnd;
+        writeControl    outputTime;
     }
 
     vorticity
     {
         type            vorticity;
         libs            ("libfieldFunctionObjects.so");
-        writeControl    onEnd;
+        writeControl    outputTime;
     }
 
     cf
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
-      writeControl    onEnd;
+      writeControl    outputTime;
       field   wallShearStress;
       scale   $factor_adim;
       result  cf;
@@ -93,11 +93,15 @@ functions
       type    scale;
       libs    ("libfieldFunctionObjects.so");
 <<<<<<< HEAD
+<<<<<<< HEAD
       writeControl    writeTime;
       timeStart       $endTime;
 =======
       writeControl    onEnd;
 >>>>>>> cc37e1a (modifications)
+=======
+      writeControl    outputTime;
+>>>>>>> 1a53c8a (mod)
       field   p;
       scale   $factor_adim;
       result  cp;

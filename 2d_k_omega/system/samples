@@ -18,7 +18,7 @@ cf_cp_surface
     type sets;
     functionObjectLibs ( "libsampling.so" );
     interpolationScheme cellPoint;
-    writeControl    onEnd;
+    writeControl    outputTime;
     setFormat raw;
     fields (cf cp);
     patches ("fixedWalls"); 
@@ -56,7 +56,7 @@ wallLaw_U
     type sets;
     functionObjectLibs ( "libsampling.so" );
     interpolationScheme cell;
-    writeControl    onEnd;
+    writeControl    outputTime;
     setFormat raw;
     fields (U nut); 
     sets
@@ -101,7 +101,7 @@ shearStressWall
     type sets;
     functionObjectLibs ( "libsampling.so" );
     interpolationScheme cellPoint;
-    writeControl    onEnd;
+    writeControl    outputTime;
     setFormat raw;
     fields (wallShearStress);
     patches ("fixedWalls");

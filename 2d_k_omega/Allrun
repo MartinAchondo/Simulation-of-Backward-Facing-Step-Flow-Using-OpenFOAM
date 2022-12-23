@@ -4,9 +4,13 @@ cd ${0%/*} || exit 1    # Run from this directory
 # Source tutorial run functions
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 mesh="Mesh_1.unv"
 =======
 mesh="2D_Mesh_600x600.unv"
+=======
+mesh="2D_Mesh_100x30.unv"
+>>>>>>> 1a53c8a (mod)
 
 
 from="../Meshes/"${mesh}

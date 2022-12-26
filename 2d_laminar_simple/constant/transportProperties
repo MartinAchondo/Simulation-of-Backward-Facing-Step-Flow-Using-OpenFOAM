@@ -15,7 +15,11 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+<<<<<<< HEAD
 #include    "$FOAM_CASE/constant/fieldsValues"
+=======
+#include    "$FOAM_CASE/constant/initialConditions"
+>>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
 
 transportModel  Newtonian;
 

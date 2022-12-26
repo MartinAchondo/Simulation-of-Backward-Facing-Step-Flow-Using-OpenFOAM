@@ -1,0 +1,17 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \    /   O peration     | Website:  https://openfoam.org
+    \  /    A nd           | Version:  8
+     \/     M anipulation  |
+---------------------------------------------------------------------------
+Description
+    Values of fields and properties.
+
+\*---------------------------------------------------------------------------*/
+
+
+U_inlet_ave   0.004000000000000002;
+nu_input      1.0000000000000006e-06;
+rho_input     1000.0;
+factor_adim   124999.99999999987;

@@ -4,6 +4,7 @@ __pycache__/
 tests/
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Meshes/
 Geometries/
 <<<<<<< HEAD
@@ -22,3 +23,6 @@ postProcessing/
 dynamicCode/
 polyMesh/
 >>>>>>> cc37e1a (modifications)
+=======
+
+>>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64

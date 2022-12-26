@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include    "$FOAM_CASE/constant/initialConditions"
+#include    "$FOAM_CASE/constant/fieldsValues"
 
 application     simpleFoam;
 
@@ -25,15 +25,7 @@ startTime       0;
 
 stopAt          endTime;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-endTime         1000;
-=======
-endTime         100;
->>>>>>> 3165d5b (m)
-=======
 endTime         17000;
->>>>>>> cc37e1a (modifications)
 
 deltaT          1;
 
@@ -92,16 +84,7 @@ functions
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
-<<<<<<< HEAD
-<<<<<<< HEAD
-      writeControl    writeTime;
-      timeStart       $endTime;
-=======
-      writeControl    onEnd;
->>>>>>> cc37e1a (modifications)
-=======
       writeControl    outputTime;
->>>>>>> 1a53c8a (mod)
       field   p;
       scale   $factor_adim;
       result  cp;

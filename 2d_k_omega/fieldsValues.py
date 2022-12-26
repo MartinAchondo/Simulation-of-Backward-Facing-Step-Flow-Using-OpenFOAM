@@ -20,11 +20,8 @@ class foamCase():
         self.Re = 7000
         self.H = 0.2
         self.h = 0.1
-<<<<<<< HEAD
-=======
         self.L = 2.0
 
->>>>>>> cc37e1a (modifications)
         self.nu = 10.0**-6
         self.rho = 10.0**3
         
@@ -57,7 +54,7 @@ if __name__=='__main__':
 
     file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'constant')
 
-    name = 'initialConditions'
+    name = 'fieldsValues'
 
     text += f'U_inlet_ave   {case.u};\n'
     text += f'k_ave         {case.k};\n'
@@ -65,6 +62,8 @@ if __name__=='__main__':
     text += f'nu_input      {case.nu};\n'
     text += f'rho_input     {case.rho};\n'
     text += f'factor_adim   {case.adim_factor};\n'
+    text += f'Lx   {case.L};\n'
+    text += f'endTime_input   {case.endTime};\n'
 
     modify_file(name,text)
 

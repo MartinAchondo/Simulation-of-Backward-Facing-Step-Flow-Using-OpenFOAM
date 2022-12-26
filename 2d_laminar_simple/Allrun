@@ -1,24 +1,14 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # Run from this directory
 
-# Source tutorial run functions
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-mesh="Mesh_1.unv"
-=======
-mesh="2D_Mesh_250x100.unv"
-=======
 mesh="2D_Mesh_250x100extended.unv"
->>>>>>> cc37e1a (modifications)
 
 
 from="../Meshes/"${mesh}
 cp $from .
 
->>>>>>> 3165d5b (m)
 modifyMesh="system/modifyMeshEntries.py"
-
 python fieldsValues.py
 ideasUnvToFoam $mesh
 python $modifyMesh
@@ -27,11 +17,6 @@ python $modifyMesh
 application="$(getApplication)"
 
 $application
-#runApplication $application
-
-#foamToVTK
-
-
 
 foamToVTK
 

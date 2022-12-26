@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include    "$FOAM_CASE/constant/initialConditions"
+#include    "$FOAM_CASE/constant/fieldsValues"
 
 application     simpleFoam;
 
@@ -25,15 +25,7 @@ startTime       0;
 
 stopAt          endTime;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-endTime         1000;
-=======
-endTime         3000;
->>>>>>> cc37e1a (modifications)
-=======
 endTime         10;
->>>>>>> 1a53c8a (mod)
 
 deltaT          1;
 

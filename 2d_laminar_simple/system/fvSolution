@@ -20,11 +20,7 @@ solvers
     p
     {
         solver          GAMG;
-<<<<<<< HEAD
-        tolerance       1e-06;
-=======
         tolerance       1e-10;
->>>>>>> cc37e1a (modifications)
         relTol          0.1;
         smoother        DICGaussSeidel;
         minIter         5;
@@ -47,8 +43,8 @@ SIMPLE
  
     residualControl
     {
-        p               1e-5;
-        U               1e-5;
+        p               1e-8;
+        U               1e-8;
     }
 }
 

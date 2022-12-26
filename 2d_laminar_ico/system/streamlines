@@ -4,22 +4,25 @@
    \\    /   O peration     | Website:  https://openfoam.org
     \\  /    A nd           | Version:  8
      \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Writes out files of streamlines with interpolated field data in VTK format.
+
 \*---------------------------------------------------------------------------*/
-FoamFile
+
+direction       both;
+
+seedSampleSet
 {
-    version     2.0;
-    format      ascii;
-    class       dictionary;
-    location    "constant";
-    object      transportProperties;
+    type            lineUniform;
+    start           (-0.0205 0.001  0.00001);
+    end             (-0.0205 0.0251 0.00001);
+    nPoints         10;
+    axis            x;
 }
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include    "$FOAM_CASE/constant/fieldsValues"
+fields          (p k U);
 
-transportModel  Newtonian;
-
-nu              [0 2 -1 0 0 0 0] $nu_input;
-rho             [0 2 -1 0 0 0 0] $rho_input;
+#includeEtc "caseDicts/postProcessing/visualization/streamlines.cfg"
 
 // ************************************************************************* //

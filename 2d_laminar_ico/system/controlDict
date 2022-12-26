@@ -10,16 +10,39 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "constant";
-    object      transportProperties;
+    location    "system";
+    object      controlDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include    "$FOAM_CASE/constant/fieldsValues"
+application     icoFoam;
 
-transportModel  Newtonian;
+startFrom       startTime;
 
-nu              [0 2 -1 0 0 0 0] $nu_input;
-rho             [0 2 -1 0 0 0 0] $rho_input;
+startTime       0;
+
+stopAt          endTime;
+
+endTime         1;
+
+deltaT          0.001;
+
+writeControl    timeStep;
+
+writeInterval   100;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
 
 // ************************************************************************* //

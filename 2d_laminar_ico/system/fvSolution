@@ -10,16 +10,44 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "constant";
-    object      transportProperties;
+    location    "system";
+    object      fvSolution;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include    "$FOAM_CASE/constant/fieldsValues"
+solvers
+{
+    p
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-06;
+        relTol          0.05;
+    }
 
-transportModel  Newtonian;
+    pFinal
+    {
+        $p;
+        relTol          0;
+    }
 
-nu              [0 2 -1 0 0 0 0] $nu_input;
-rho             [0 2 -1 0 0 0 0] $rho_input;
+    U
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-05;
+        relTol          0;
+    }
+}
+
+PISO
+{
+    nCorrectors     2;
+    nNonOrthogonalCorrectors 0;
+    pRefCell        0;
+    pRefValue       0;
+}
+
+
 
 // ************************************************************************* //

@@ -1,42 +1,22 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # Run from this directory
 
-<<<<<<< HEAD
 
 mesh="2D_Mesh_250x100extended.unv"
 
 
 from="../Meshes/"${mesh}
 cp $from .
-=======
-# Source tutorial run functions
-
-mesh="Mesh_1.unv"
-modifyMesh="system/modifyMeshEntries.py"
-
-python fieldsValues.py
-ideasUnvToFoam $mesh
-python $modifyMesh
-
-. $WM_PROJECT_DIR/bin/tools/RunFunctions
-application="$(getApplication)"
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
 
 modifyMesh="system/modifyMeshEntries.py"
 python fieldsValues.py
 ideasUnvToFoam $mesh
 python $modifyMesh
 
-<<<<<<< HEAD
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
 application="$(getApplication)"
 
 $application
-=======
-#foamToVTK
-
-
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
 
 foamToVTK
 

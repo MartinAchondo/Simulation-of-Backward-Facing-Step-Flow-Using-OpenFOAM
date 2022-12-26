@@ -15,11 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-<<<<<<< HEAD
 #include    "$FOAM_CASE/constant/fieldsValues"
-=======
-#include    "$FOAM_CASE/constant/initialConditions"
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
 
 application     simpleFoam;
 
@@ -29,21 +25,13 @@ startTime       0;
 
 stopAt          endTime;
 
-<<<<<<< HEAD
 endTime         17000;
-=======
-endTime         1000;
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
 
 deltaT          1;
 
 writeControl    timeStep;
 
-<<<<<<< HEAD
 writeInterval   500;
-=======
-writeInterval   $endTime;
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
 
 purgeWrite      4;
 
@@ -65,64 +53,38 @@ functions
   {
     #includeFunc  residuals
 
-<<<<<<< HEAD
     //#includeFunc  streamlines
 
-=======
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
     wallShearStress
     {
         type            wallShearStress;
         functionObjectLibs ("libfieldFunctionObjects.so");
-<<<<<<< HEAD
         writeControl    outputTime;
-=======
-        writeControl    writeTime;
-        timeStart       $endTime;
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
     }
 
     vorticity
     {
         type            vorticity;
         libs            ("libfieldFunctionObjects.so");
-<<<<<<< HEAD
         writeControl    outputTime;
-=======
-        writeControl    writeTime;
-        timeStart       $endTime;
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
     }
 
     cf
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
-<<<<<<< HEAD
       writeControl    outputTime;
       field   wallShearStress;
       scale   $factor_adim;
       result  cf;
       patches ("fixedWalls");
-=======
-      writeControl    writeTime;
-      timeStart       $endTime;
-      field   wallShearStress;
-      scale   $factor_adim;
-      result  cf;
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
     }
 
     cp
     {
       type    scale;
       libs    ("libfieldFunctionObjects.so");
-<<<<<<< HEAD
       writeControl    outputTime;
-=======
-      writeControl    writeTime;
-      timeStart       $endTime;
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
       field   p;
       scale   $factor_adim;
       result  cp;

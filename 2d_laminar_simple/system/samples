@@ -18,12 +18,7 @@ cf_cp_surface
     type sets;
     functionObjectLibs ( "libsampling.so" );
     interpolationScheme cellPoint;
-<<<<<<< HEAD
     writeControl    outputTime;
-=======
-    writeControl    timeStep;
-    writeInterval   $endTime;
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
     setFormat raw;
     fields (cf cp);
     patches ("fixedWalls"); 
@@ -42,11 +37,7 @@ cf_cp_surface
             type lineUniform;
             axis x;
             start           (1 0 0);
-<<<<<<< HEAD
             end             ($Lx 0 0);
-=======
-            end             (2 0 0);
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
             nPoints         50;
         }
     upper
@@ -54,11 +45,7 @@ cf_cp_surface
             type lineUniform;
             axis distance;
             start           (0 0.2 0);
-<<<<<<< HEAD
             end             ($Lx 0.2 0);
-=======
-            end             (2 0.2 0);
->>>>>>> ea60bfa93e61337fec420f36a047d8654fa0de64
             nPoints         50;
         }
     );

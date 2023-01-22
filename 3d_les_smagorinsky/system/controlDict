@@ -15,10 +15,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-
 #include    "$FOAM_CASE/constant/fieldsValues"
 
-application     simpleFoam;
+application     pisoFoam;
 
 startFrom       startTime;
 
@@ -26,13 +25,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         30;
+endTime         200;
 
-deltaT          1;
+deltaT          1e-02;
 
 writeControl    timeStep;
 
-writeInterval   1;
+writeInterval   10;
 
 purgeWrite      0;
 
@@ -100,6 +99,14 @@ functions
 
 
     #include "samples"
+
+    
+    #includeFunc fieldAverage(U, p, prime2Mean = yes)
+
+
+    #includeFunc scalarTransportS
 }
+
+
 
 // ************************************************************************* //

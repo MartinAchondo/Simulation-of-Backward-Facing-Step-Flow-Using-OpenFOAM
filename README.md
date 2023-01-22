@@ -1,5 +1,6 @@
 ## Simulation of Backward Facing Step Flow Using OpenFOAM
 
+
 <pre> 
 .
 ├── 2d_k_omega                   # 2D k-Omega SST
@@ -9,15 +10,16 @@
 ├── 3d_les_wale                  # 3D LES WALE
 ├── Geometries
 └── Meshes
-... </pre>
+</pre>
 
+Every model have the same file structure:
 
-```bash 
+<pre> 
 .
 ├── ...
-├── Model           
-│   ├── 0          
-│   ├── constant         
+├── Model                      
+│   ├── 0                     
+│   ├── constant                            
 │   ├── postCodes
 │   ├── system
 │   ├── Allclean
@@ -25,4 +27,4 @@
 │   ├── fieldsValues.py                       
 │   └── plots.ipynb                
 └── ...
- ```
+</pre>

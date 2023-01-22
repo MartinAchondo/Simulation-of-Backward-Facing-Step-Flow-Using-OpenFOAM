@@ -15,6 +15,8 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include    "$FOAM_CASE/constant/fieldsValues"
+
 application     pisoFoam;
 
 startFrom       startTime;
@@ -29,7 +31,7 @@ deltaT          1e-02;
 
 writeControl    timeStep;
 
-writeInterval   100;
+writeInterval   10;
 
 purgeWrite      0;
 
@@ -45,69 +47,66 @@ timePrecision   6;
 
 runTimeModifiable true;
 
+
 functions
 {
-    probes
+
+    #includeFunc  residuals;
+
+    wallShearStress
     {
-        type            probes;
-        libs            ("libsampling.so");
-        writeControl    timeStep;
-        writeInterval   1;
-
-        fields
-        (
-            p
-        );
-
-        probeLocations
-        (
-            (0.0254 0.0253 0)
-            (0.0508 0.0253 0)
-            (0.0762 0.0253 0)
-            (0.1016 0.0253 0)
-            (0.127 0.0253 0)
-            (0.1524 0.0253 0)
-            (0.1778 0.0253 0)
-        );
-
+        type            wallShearStress;
+        functionObjectLibs ("libfieldFunctionObjects.so");
+        writeControl    outputTime;
     }
 
+    yPlus
+    {
+        type            yPlus;
+        functionObjectLibs ("libfieldFunctionObjects.so");
+        writeControl    outputTime;
+    }
+
+    cf
+    {
+      type    scale;
+      libs    ("libfieldFunctionObjects.so");
+      writeControl    outputTime;
+      field   wallShearStress;
+      scale   $factor_adim;
+      result  cf;
+    }
+
+    cp
+    {
+      type    scale;
+      libs    ("libfieldFunctionObjects.so");
+      writeControl    outputTime;
+      field   p;
+      scale   $factor_adim;
+      result  cp;
+    }
+
+    nuTurb
+    {
+      type    scale;
+      libs    ("libfieldFunctionObjects.so");
+      writeControl    outputTime;
+      field   nut;
+      scale   1.0;
+      result  nuTurb;
+      offSet  -1e-06;
+    }
+
+
+    #include "samples"
+
+    
     #includeFunc fieldAverage(U, p, prime2Mean = yes)
 
-    surfaceSampling
-    {
-        // Sample near-wall velocity
 
-        type surfaces;
-
-        // Where to load it from (if not already in solver)
-        libs            ("libsampling.so");
-        writeControl    writeTime;
-
-        interpolationScheme cellPoint;
-
-        surfaceFormat vtk;
-
-        // Fields to be sampled
-        fields
-        (
-            U
-        );
-
-        surfaces
-        (
-            nearWall
-            {
-                type            patchInternalField;
-                patches         ( lowerWall );
-                distance        1E-6;
-                interpolate     true;
-                triangulate     false;
-            }
-        );
-    }
-
-    #includeFunc scalarTransport
+    #includeFunc scalarTransportS
 }
+
 
 // ************************************************************************* //

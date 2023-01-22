@@ -15,8 +15,10 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include    "$FOAM_CASE/constant/fieldsValues"
+
 transportModel  Newtonian;
 
-nu              [0 2 -1 0 0 0 0] 1e-05;
+nu              [0 2 -1 0 0 0 0] $nu_input;
 
 // ************************************************************************* //

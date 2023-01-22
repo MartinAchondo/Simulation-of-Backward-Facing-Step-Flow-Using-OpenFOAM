@@ -2,13 +2,14 @@
 cd ${0%/*} || exit 1    # Run from this directory
 
 
-mesh="3D_150x50x20.unv"
+mesh="3D_Mesh_150x50x20.unv"
 
 
 from="../Meshes/"${mesh}
 cp $from .
 
 modifyMesh="system/modifymesh.py"
+python fieldsValues.py
 ideasUnvToFoam $mesh
 python $modifyMesh
 
@@ -17,5 +18,6 @@ application="$(getApplication)"
 
 $application
 
+foamToVTK
 
 #------------------------------------------------------------------------------

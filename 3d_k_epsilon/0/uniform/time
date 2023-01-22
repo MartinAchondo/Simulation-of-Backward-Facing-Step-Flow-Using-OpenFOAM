@@ -5,49 +5,28 @@
     \\  /    A nd           | Version:  8
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
+/*   Windows 32 and 64 bit porting by blueCAPE: http://www.bluecape.com.pt   *\
+|  Based on Windows porting (2.0.x v4) by Symscape: http://www.symscape.com   |
+\*---------------------------------------------------------------------------*/
 FoamFile
 {
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      fvSchemes;
+    location    "0/uniform";
+    object      time;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes
-{
-    default         backward;
-}
+value           0;
 
-gradSchemes
-{
-    default         Gauss linear;
-}
+name            "0";
 
-divSchemes
-{
-    default         none;
-    div(phi,U)      Gauss LUST grad(U);
-    div(phi,k)      Gauss limitedLinear 1;
-    div(phi,s)      bounded Gauss limitedLinear 1;
-    div((nuEff*dev2(T(grad(U))))) Gauss linear;
-}
+index           0;
 
-laplacianSchemes
-{
-    default         Gauss linear corrected;
-}
+deltaT          1;
 
-interpolationSchemes
-{
-    default         linear;
-}
-
-snGradSchemes
-{
-    default         corrected;
-}
+deltaT0         1;
 
 
 // ************************************************************************* //

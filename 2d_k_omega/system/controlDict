@@ -18,20 +18,20 @@ FoamFile
 #include    "$FOAM_CASE/constant/fieldsValues"
 
 application     simpleFoam;
-
+bv
 startFrom       startTime;
 
 startTime       0;
 
 stopAt          endTime;
 
-endTime         10;
+endTime         1000;
 
 deltaT          1;
 
 writeControl    timeStep;
 
-writeInterval   5;
+writeInterval   500;
 
 purgeWrite      3;
 
@@ -65,13 +65,6 @@ functions
     {
         type            yPlus;
         functionObjectLibs ("libfieldFunctionObjects.so");
-        writeControl    outputTime;
-    }
-
-    vorticity
-    {
-        type            vorticity;
-        libs            ("libfieldFunctionObjects.so");
         writeControl    outputTime;
     }
 

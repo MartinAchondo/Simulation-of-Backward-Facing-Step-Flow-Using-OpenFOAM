@@ -15,16 +15,18 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include    "$FOAM_CASE/constant/fieldsValues"
+
 dimensions      [0 2 -3 0 0 0 0];
 
-internalField   uniform 14.855;
+internalField   $epsilon_ave;
 
 boundaryField
 {
     inlet
     {
         type            fixedValue;
-        value           uniform 14.855;
+        value          $internalField;
     }
     outlet
     {
@@ -33,11 +35,7 @@ boundaryField
     fixedWalls
     {
         type            epsilonWallFunction;
-        value           uniform 14.855;
-    }
-    frontAndBack
-    {
-        type            empty;
+        value          $internalField;
     }
 }
 

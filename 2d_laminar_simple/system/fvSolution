@@ -40,7 +40,7 @@ solvers
 SIMPLE
 {
     nNonOrthogonalCorrectors 0;
- 
+    consistent      yes;
     residualControl
     {
         p               1e-8;

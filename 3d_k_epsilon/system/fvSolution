@@ -25,7 +25,7 @@ solvers
         smoother        GaussSeidel;
     }
 
-    "(U|k|epsilon)"
+    "(U|k|epsilon|omega|f|v2)"
     {
         solver          smoothSolver;
         smoother        symGaussSeidel;
@@ -43,8 +43,7 @@ SIMPLE
     {
         p               1e-2;
         U               1e-3;
-        k               1e-3;
-        epsilon         1e-3;
+        "(k|epsilon|omega|f|v2)" 1e-3;
     }
 }
 

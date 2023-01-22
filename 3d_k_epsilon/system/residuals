@@ -6,23 +6,14 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 Description
-    Writes out files of streamlines with interpolated field data in VTK format.
+    For specified fields, writes out the initial residuals for the first
+    solution of each time step; for non-scalar fields (e.g. vectors), writes
+    the largest of the residuals for each component (e.g. x, y, z).
 
 \*---------------------------------------------------------------------------*/
 
-direction       both;
+#includeEtc "caseDicts/postProcessing/numerical/residuals.cfg"
 
-seedSampleSet
-{
-    type            lineUniform;
-    start           (-0.0205 0.001  0.00001);
-    end             (-0.0205 0.0251 0.00001);
-    nPoints         10;
-    axis            x;
-}
-
-fields          (p k U);
-
-#includeEtc "caseDicts/postProcessing/visualization/streamlines.cfg"
+fields (p U k epsilon);
 
 // ************************************************************************* //

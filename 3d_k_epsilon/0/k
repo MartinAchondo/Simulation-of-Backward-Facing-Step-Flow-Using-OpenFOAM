@@ -15,16 +15,18 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include    "$FOAM_CASE/constant/fieldsValues"
+
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0.375;
+internalField   uniform $k_ave;
 
 boundaryField
 {
     inlet
     {
         type            fixedValue;
-        value           uniform 0.375;
+        value           $internalField;
     }
     outlet
     {
@@ -33,12 +35,9 @@ boundaryField
     fixedWalls
     {
         type            kqRWallFunction;
-        value           uniform 0.375;
+        value           $internalField;
     }
-    frontAndBack
-    {
-        type            empty;
-    }
+
 }
 
 

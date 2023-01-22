@@ -15,6 +15,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+
+#include    "$FOAM_CASE/constant/fieldsValues"
+
 application     simpleFoam;
 
 startFrom       startTime;
@@ -23,13 +26,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         2000;
+endTime         30;
 
 deltaT          1;
 
 writeControl    timeStep;
 
-writeInterval   100;
+writeInterval   1;
 
 purgeWrite      0;
 
@@ -45,6 +48,65 @@ timePrecision   6;
 
 runTimeModifiable true;
 
+functions
+{
 
+    #includeFunc  residuals;
+
+    wallShearStress
+    {
+        type            wallShearStress;
+        functionObjectLibs ("libfieldFunctionObjects.so");
+        writeControl    outputTime;
+    }
+
+    yPlus
+    {
+        type            yPlus;
+        functionObjectLibs ("libfieldFunctionObjects.so");
+        writeControl    outputTime;
+    }
+
+    vorticity
+    {
+        type            vorticity;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    outputTime;
+    }
+
+    cf
+    {
+      type    scale;
+      libs    ("libfieldFunctionObjects.so");
+      writeControl    outputTime;
+      field   wallShearStress;
+      scale   $factor_adim;
+      result  cf;
+    }
+
+    cp
+    {
+      type    scale;
+      libs    ("libfieldFunctionObjects.so");
+      writeControl    outputTime;
+      field   p;
+      scale   $factor_adim;
+      result  cp;
+    }
+
+    nuTurb
+    {
+      type    scale;
+      libs    ("libfieldFunctionObjects.so");
+      writeControl    outputTime;
+      field   nut;
+      scale   1.0;
+      result  nuTurb;
+      offSet  -1e-06;
+    }
+
+
+    #include "samples"
+}
 
 // ************************************************************************* //

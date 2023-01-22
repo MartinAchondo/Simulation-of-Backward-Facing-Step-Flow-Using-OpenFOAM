@@ -11,7 +11,7 @@ Description
 \*---------------------------------------------------------------------------*/
 
 pointWallLaw1  0.95;
-pointWallLaw2  1.4;
+pointWallLaw2  1.8;
 
 cf_cp_surface
 {

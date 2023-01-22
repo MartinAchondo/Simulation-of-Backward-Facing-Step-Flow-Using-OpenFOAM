@@ -30,7 +30,7 @@ cf_cp_surface
             axis x;
             start           (0 0.1 0.2);
             end             (1 0.1 0.2);
-            nPoints         50;
+            nPoints         100;
         }
     lower_2
         {
@@ -38,7 +38,7 @@ cf_cp_surface
             axis x;
             start           (1 0 0.2);
             end             ($Lx 0 0.2);
-            nPoints         50;
+            nPoints         100;
         }
     upper
         {
@@ -46,7 +46,7 @@ cf_cp_surface
             axis distance;
             start           (0 0.2 0.2);
             end             ($Lx 0.2 0.2);
-            nPoints         50;
+            nPoints         100;
         }
     );
 }
@@ -66,7 +66,7 @@ wallLaw_U
             type lineUniform;
             axis distance;
             start           ($pointWallLaw1 0.1 0.2);
-            end             ($pointWallLaw1 0.12 0.2);
+            end             ($pointWallLaw1 0.15 0.2);
             nPoints         500;
         }
     X1_up
@@ -75,23 +75,23 @@ wallLaw_U
             axis distance;
             start           ($pointWallLaw1 0.2 0.2);
             end             ($pointWallLaw1 0.15 0.2);
-            nPoints         50;
+            nPoints         500;
         }
     X2_down
         {
             type lineUniform;
             axis distance;
             start           ($pointWallLaw2 0 0.2);
-            end             ($pointWallLaw2 0.05 0.2);
-            nPoints         50;
+            end             ($pointWallLaw2 0.09 0.2);
+            nPoints         500;
         }
     X2_up
         {
             type lineUniform;
             axis distance;
             start           ($pointWallLaw2 0.2 0.2);
-            end             ($pointWallLaw2 0.15 0.2);
-            nPoints         50;
+            end             ($pointWallLaw2 0.11 0.2);
+            nPoints         500;
         }
     );
 }
@@ -120,7 +120,7 @@ shearStressWall
         type lineUniform;
         axis distance;
         start           ($pointWallLaw1 0.2 0.2);
-        end             (1 0.1 0.2);
+        end             (1 0.2 0.2);
         nPoints         1;
         }
     X2_down

@@ -34,8 +34,7 @@ class foamCase():
         L = 0.07*self.h
         T = 0.05
 
-        perim = self.h*4*2+self.h*2
-        self.u = self.Re*self.nu/perim
+        self.u = self.Re*self.nu/self.H
 
         self.k = 1.5*(self.u*T)**2
         self.epsilon = 0.09**0.75*self.k**1.5/L

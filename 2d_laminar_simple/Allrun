@@ -2,7 +2,7 @@
 cd ${0%/*} || exit 1    # Run from this directory
 
 
-mesh="2D_Mesh_250x100extended.unv"
+mesh="2D_Mesh_100x30.unv"
 
 
 from="../Meshes/"${mesh}
@@ -18,6 +18,5 @@ application="$(getApplication)"
 
 $application
 
-foamToVTK
 
 #------------------------------------------------------------------------------

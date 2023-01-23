@@ -16,22 +16,22 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 ddtSchemes
-{ 
+{
     default         steadyState;
 }
 
 gradSchemes
 {
     default         Gauss linear;
-    grad(p)         Gauss linear;
 }
 
 divSchemes
 {
     default         none;
-    div(phi,U)      Gauss upwind;
+    div(phi,U)      bounded Gauss upwind;
+    div(phi,k)      bounded Gauss upwind;
+    div(phi,epsilon)  bounded Gauss upwind;
     div((nuEff*dev2(T(grad(U))))) Gauss linear;
-    curl(U) leastSquares;
 }
 
 laplacianSchemes
@@ -48,5 +48,11 @@ snGradSchemes
 {
     default         corrected;
 }
+
+wallDist
+{
+    method meshWave;
+}
+
 
 // ************************************************************************* //

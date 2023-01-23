@@ -1,0 +1,90 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#include    "$FOAM_CASE/constant/fieldsValues"
+
+dimensions      [0 1 -1 0 0 0 0];
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        U_ave       $U_inlet_ave;
+        value           #codeStream
+        {
+            codeInclude
+            #{
+                #include    "fvCFD.H"
+            #};
+
+            codeOptions
+            #{
+                -I$(LIB_SRC)/finiteVolume/lnInclude \
+                -I$(LIB_SRC)/meshTools/lnInclude
+            #};
+
+            codeLibs
+            #{
+                -lmeshTools \
+                -lfiniteVolume
+            #};
+
+            code
+            #{
+                const scalar U_inlet = readScalar(dict.lookup("U_ave"));
+                const scalar H = 0.1;
+
+                const IOdictionary& d = static_cast<const IOdictionary&>
+                (
+                dict.parent().parent()
+                );
+                const fvMesh& mesh = refCast<const fvMesh>(d.db());
+                const label id = mesh.boundary().findPatchID("inlet");
+                const fvPatch& patch = mesh.boundary()[id];
+                
+                vectorField U(patch.size(), vector(0, 0, 0));
+
+                forAll(U, i) //equivalent to for (int i=0; patch.size()<i; i++)
+                {
+                    const scalar y = patch.Cf()[i][1] - H;
+                    U[i] = vector(6*U_inlet*(y*(H-y))/(H*H), 0., 0.);
+                }
+                
+                writeEntry(os, "", U);
+                
+            #};
+        };
+    }
+
+    outlet
+    {
+        type            zeroGradient;
+    }
+
+    fixedWalls
+    {
+        type            noSlip;
+    }
+
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+// ************************************************************************* //

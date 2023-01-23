@@ -97,12 +97,56 @@ functions
       offSet  -1e-06;
     }
 
+    fieldAverage
+    {
+      type            fieldAverage;
+      functionObjectLibs ( "libfieldFunctionObjects.so" );
+      enabled         true;
+      writeControl    outputTime;
+ 
+      fields
+      (
+          U
+          {
+              mean        on;
+              prime2Mean  on;
+              base        time;
+          }
+ 
+          p
+          {
+              mean        on;
+              prime2Mean  on;
+              base        time;
+          }
+
+          cf
+          {
+              mean        on;
+              base        time;
+          }
+
+          cp
+          {
+              mean        on;
+              base        time;
+          }
+
+          nut
+          {
+              mean        on;
+              base        time;
+          }
+          wallShearStress
+          {
+              mean        on;
+              base        time;
+          }
+      );
+    }
+
 
     #include "samples"
-
-    
-    #includeFunc fieldAverage(U, p, prime2Mean = yes)
-
 
     #includeFunc scalarTransportS
 }

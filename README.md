@@ -1,7 +1,8 @@
 ## Simulation of Backward Facing Step Flow Using OpenFOAM
 
 Every folder have the model used:
-<pre> 
+<pre>
+├── 2d_k_epsilon/                 # 2D k-epsilon
 ├── 2d_k_omega/                   # 2D k-Omega SST
 ├── 2d_laminar_simple/            # 2D Laminar 
 ├── 3d_k_epsilon/                 # 3D k-epsilon

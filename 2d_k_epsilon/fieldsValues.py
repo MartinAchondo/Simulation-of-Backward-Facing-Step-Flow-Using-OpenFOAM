@@ -17,19 +17,28 @@ class foamCase():
 
     def __init__(self) -> None:
         
-        self.Re = 1000
+        self.Re = 9000
         self.H = 0.2
         self.h = 0.1
-        self.L = 2.7
+        self.L = 2.0
 
         self.nu = 10.0**-6
         self.rho = 10.0**3
         
         self.calculate_fields()
+
+        self.endTime = 1000
  
     def calculate_fields(self):
 
+        L = 0.07*self.h
+        T = 0.01
+
         self.u = self.Re*self.nu/self.H
+
+        self.k = 1.5*(self.u*T)**2
+        self.epsilon = 0.09**0.75*self.k**1.5/L
+        self.omega = self.epsilon/self.k
 
         self.adim_factor = 1.0/(0.5*self.u**2)
   
@@ -48,11 +57,13 @@ if __name__=='__main__':
     name = 'fieldsValues'
 
     text += f'U_inlet_ave   {case.u};\n'
+    text += f'k_ave         {case.k};\n'
+    text += f'epsilon_ave     {case.epsilon};\n'
     text += f'nu_input      {case.nu};\n'
     text += f'rho_input     {case.rho};\n'
     text += f'factor_adim   {case.adim_factor};\n'
     text += f'Lx   {case.L};\n'
-    #text += f'endTime_input   {case.endTime};\n'
+    text += f'endTime_input   {case.endTime};\n'
 
     modify_file(name,text)
 

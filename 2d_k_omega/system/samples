@@ -11,7 +11,7 @@ Description
 \*---------------------------------------------------------------------------*/
 
 pointWallLaw1  0.95;
-pointWallLaw2  1.4;
+pointWallLaw2  1.75;
 
 cf_cp_surface
 {
@@ -30,7 +30,7 @@ cf_cp_surface
             axis x;
             start           (0 0.1 0);
             end             (1 0.1 0);
-            nPoints         50;
+            nPoints         100;
         }
     lower_2
         {
@@ -38,7 +38,7 @@ cf_cp_surface
             axis x;
             start           (1 0 0);
             end             ($Lx 0 0);
-            nPoints         50;
+            nPoints         100;
         }
     upper
         {
@@ -46,7 +46,7 @@ cf_cp_surface
             axis distance;
             start           (0 0.2 0);
             end             ($Lx 0.2 0);
-            nPoints         50;
+            nPoints         100;
         }
     );
 }

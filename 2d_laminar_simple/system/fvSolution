@@ -20,7 +20,7 @@ solvers
     p
     {
         solver          GAMG;
-        tolerance       1e-10;
+        tolerance       1e-12;
         relTol          0.1;
         smoother        DICGaussSeidel;
     }
@@ -29,7 +29,7 @@ solvers
     {
         solver          smoothSolver;
         smoother        symGaussSeidel;
-        tolerance       1e-10;
+        tolerance       1e-12;
         relTol          0.1;
     }
 
@@ -38,7 +38,7 @@ solvers
 SIMPLE
 {
     nNonOrthogonalCorrectors 0;
-    consistent      yes;
+    //consistent      yes;
     residualControl
     {
         p               1e-3;

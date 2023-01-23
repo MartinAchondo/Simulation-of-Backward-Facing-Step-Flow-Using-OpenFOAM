@@ -9,44 +9,40 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "system";
-    object      fvSchemes;
+    class       volScalarField;
+    location    "0";
+    object      epsilon;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes
-{ 
-    default         steadyState;
+#include    "$FOAM_CASE/constant/fieldsValues"
+
+dimensions      [0 2 -3 0 0 0 0];
+
+internalField   uniform $epsilon_ave;
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        value           $internalField;
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+    fixedWalls
+    {
+        type            omegaWallFunction;
+        value           $internalField;
+    }
+
+    frontAndBack
+    {
+        type            empty;
+    }
 }
 
-gradSchemes
-{
-    default         Gauss linear;
-    grad(p)         Gauss linear;
-}
-
-divSchemes
-{
-    default         none;
-    div(phi,U)      Gauss upwind;
-    div((nuEff*dev2(T(grad(U))))) Gauss linear;
-    curl(U) leastSquares;
-}
-
-laplacianSchemes
-{
-    default         Gauss linear corrected;
-}
-
-interpolationSchemes
-{
-    default         linear;
-}
-
-snGradSchemes
-{
-    default         corrected;
-}
 
 // ************************************************************************* //

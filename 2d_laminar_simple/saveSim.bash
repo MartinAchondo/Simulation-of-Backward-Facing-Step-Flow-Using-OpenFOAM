@@ -2,7 +2,7 @@
 cd ${0%/*} || exit 1    # Run from this directory
 
 
-Re="800"
+Re="1200"
 
 mkdir "solution"
 new_path="solution/"${Re}

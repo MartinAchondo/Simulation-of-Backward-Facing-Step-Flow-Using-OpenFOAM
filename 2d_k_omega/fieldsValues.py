@@ -17,7 +17,7 @@ class foamCase():
 
     def __init__(self) -> None:
         
-        self.Re = 9000
+        self.Re = 8000
         self.H = 0.2
         self.h = 0.1
         self.L = 2.0
@@ -32,7 +32,7 @@ class foamCase():
     def calculate_fields(self):
 
         L = 0.07*self.H
-        T = 0.2
+        T = 0.1
 
         self.u = self.Re*self.nu/self.H
 

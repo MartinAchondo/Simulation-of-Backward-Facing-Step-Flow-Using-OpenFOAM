@@ -17,7 +17,7 @@ class foamCase():
 
     def __init__(self) -> None:
         
-        self.Re = 1000
+        self.Re = 1200
         self.H = 0.2
         self.h = 0.1
         self.L = 2.7

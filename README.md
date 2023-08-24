@@ -1,6 +1,5 @@
 ## Simulation of Backward Facing Step Flow Using OpenFOAM
 
-Every folder have the model used:
 <pre>
 ├── 2d_k_epsilon/                 # 2D k-epsilon
 ├── 2d_k_omega/                   # 2D k-Omega SST
@@ -12,7 +11,7 @@ Every folder have the model used:
 └── Meshes/
 </pre>
 
-Every model have the same file structure:
+Every model has the same file structure:
 <pre> 
 ├── ...
 ├── Model                      
